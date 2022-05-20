@@ -136,19 +136,19 @@ export default {
       };
 </script>
 <style lang="scss" scoped>
-.app-container{
-    .resource-item{
+    .app-container{
+      .resource-item{
         margin-bottom: 10px;
+      }
     }
-    .el-card__body .el-upload-dragger{
-        width:90vw
+    ::v-deep{
+      .el-upload{
+        .el-upload-dragger{
+            width: 90vw;
+          }
+      }
     }
     .btn{
         float: right
     }
-
-}
 </style>
-   
-
-        

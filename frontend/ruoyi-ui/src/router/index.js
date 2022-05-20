@@ -64,7 +64,7 @@ export const constantRoutes = [
   {
     path: '',
     component: Layout,
-    redirect: 'login',
+    redirect: '/planResource',
     children: [
       {
         path: '/index',
