@@ -46,11 +46,11 @@ export default {
   },
   data() {
     return {
-      activeIndex: '/icon'
+      activeIndex: '/planResource'
     }
   },
   mounted() {
-    this.$router.push({ path: '/icon' })
+    this.$router.push({ path: '/planResource' })
   },
   methods: {
     handleSelect(key, keyPath) {
