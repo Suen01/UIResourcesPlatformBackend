@@ -64,13 +64,38 @@ export const constantRoutes = [
   {
     path: '',
     component: Layout,
-    redirect: 'index',
+    redirect: 'login',
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/index'),
+        path: '/index',
+        component: () => import('@/views/index_v1'),
         name: 'Index',
         meta: { title: '首页', icon: 'dashboard', affix: true }
+      },
+      {
+        path: '/icon',
+        component: () => import('@/views/uiplatform/icon/Icon'),
+        name: 'Icon'
+      },
+      {
+        path: '/planResource',
+        component: () => import('@/views/uiplatform/planResource')
+      },
+      {
+        path: '/upload',
+        component: () => import('@/views/uiplatform/planResource/upload')
+      },
+      {
+        path: '/download',
+        component: () => import('@/views/uiplatform/planResource/download')
+      },
+      {
+        path: '/detail',
+        component: () => import('@/views/uiplatform/planResource/resourceDetail')
+      },
+      {
+        path: '/planResource',
+        component: () => import('@/views/uiplatform/planResource')
       }
     ]
   },
@@ -165,7 +190,7 @@ export const dynamicRoutes = [
 ]
 
 // 防止连续点击多次路由报错
-let routerPush = Router.prototype.push;
+const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return routerPush.call(this, location).catch(err => err)
 }

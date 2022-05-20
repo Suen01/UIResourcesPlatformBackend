@@ -1,13 +1,16 @@
 <template>
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">若依后台管理系统</h3>
+      <div class="form_title">
+        <img src="../assets/manage/shareIcon.png"/>
+        <h3 class="title">UI资源协同管理平台</h3>
+      </div>
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
           type="text"
           auto-complete="off"
-          placeholder="账号"
+          placeholder="用户名"
         >
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
         </el-input>
@@ -23,7 +26,7 @@
           <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon" />
         </el-input>
       </el-form-item>
-      <el-form-item prop="code" v-if="captchaOnOff">
+      <!-- <el-form-item prop="code" v-if="captchaOnOff">
         <el-input
           v-model="loginForm.code"
           auto-complete="off"
@@ -36,8 +39,9 @@
         <div class="login-code">
           <img :src="codeUrl" @click="getCode" class="login-code-img"/>
         </div>
-      </el-form-item>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
+      </el-form-item>-->
+     
+      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">自动登录</el-checkbox>
       <el-form-item style="width:100%;">
         <el-button
           :loading="loading"
@@ -49,15 +53,15 @@
           <span v-if="!loading">登 录</span>
           <span v-else>登 录 中...</span>
         </el-button>
-        <div style="float: right;" v-if="register">
-          <router-link class="link-type" :to="'/register'">立即注册</router-link>
+        <div style="float: right;margin-top: 10px">
+          <router-link class="link-type" :to="'/register'">注册账户</router-link>
         </div>
       </el-form-item>
     </el-form>
     <!--  底部  -->
-    <div class="el-login-footer">
+    <!-- <div class="el-login-footer">
       <span>Copyright © 2018-2022 ruoyi.vip All Rights Reserved.</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -128,28 +132,29 @@ export default {
       };
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true;
-          if (this.loginForm.rememberMe) {
-            Cookies.set("username", this.loginForm.username, { expires: 30 });
-            Cookies.set("password", encrypt(this.loginForm.password), { expires: 30 });
-            Cookies.set('rememberMe', this.loginForm.rememberMe, { expires: 30 });
-          } else {
-            Cookies.remove("username");
-            Cookies.remove("password");
-            Cookies.remove('rememberMe');
-          }
-          this.$store.dispatch("Login", this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || "/" }).catch(()=>{});
-          }).catch(() => {
-            this.loading = false;
-            if (this.captchaOnOff) {
-              this.getCode();
-            }
-          });
-        }
-      });
+      this.$router.push({ path: "/planResource" })
+      // this.$refs.loginForm.validate(valid => {
+      //   if (valid) {
+      //     this.loading = true;
+      //     if (this.loginForm.rememberMe) {
+      //       Cookies.set("username", this.loginForm.username, { expires: 30 });
+      //       Cookies.set("password", encrypt(this.loginForm.password), { expires: 30 });
+      //       Cookies.set('rememberMe', this.loginForm.rememberMe, { expires: 30 });
+      //     } else {
+      //       Cookies.remove("username");
+      //       Cookies.remove("password");
+      //       Cookies.remove('rememberMe');
+      //     }
+      //     this.$store.dispatch("Login", this.loginForm).then(() => {
+      //       this.$router.push({ path: this.redirect || "/" }).catch(()=>{});
+      //     }).catch(() => {
+      //       this.loading = false;
+      //       if (this.captchaOnOff) {
+      //         this.getCode();
+      //       }
+      //     });
+      //   }
+      // });
     }
   }
 };
@@ -157,23 +162,36 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 .login {
+  position: relative;
+  /* width:100vw; */
+  height: 100%;
+  background-image: url("../assets/manage/bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.form_title{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-image: url("../assets/images/login-background.jpg");
-  background-size: cover;
+  margin: 30px 0px;
+  img {
+    width: 3.33vw;
+    height: 3.33vw;
+  }
+  
+  .title {
+    margin: 0px 20px;
+    text-align: center;
+    color: #707070;
+  }
 }
-.title {
-  margin: 0px auto 30px auto;
-  text-align: center;
-  color: #707070;
-}
-
 .login-form {
+  position: absolute;
+  bottom: 16vh;
+  right: 10vw;
   border-radius: 6px;
   background: #ffffff;
-  width: 400px;
+  width: 31vw;
   padding: 25px 25px 5px 25px;
   .el-input {
     height: 38px;
@@ -205,7 +223,7 @@ export default {
   height: 40px;
   line-height: 40px;
   position: fixed;
-  bottom: 0;
+  bottom: 0; 
   width: 100%;
   text-align: center;
   color: #fff;
