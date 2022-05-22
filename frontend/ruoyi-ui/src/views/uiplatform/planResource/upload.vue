@@ -136,19 +136,30 @@ export default {
       };
 </script>
 <style lang="scss" scoped>
-    .app-container{
-      .resource-item{
+    .app-container {
+      .resource-item {
         margin-bottom: 10px;
+        .title{
+          font-size: 16px;
+          margin-bottom: 4px;
+        }
       }
-    }
-    ::v-deep{
-      .el-upload{
-        .el-upload-dragger{
-            width: 90vw;
+      ::v-deep {
+        .el-card__body {
+          height: 80vh;
+          overflow: auto;
+          padding:15px 10px 0px 30px;
+        }
+        .el-upload {
+          .el-upload-dragger{
+              width: 85vw;
+              background-color: #f3f3f3;
           }
+        }
+      }
+      .btn{
+          float: right
       }
     }
-    .btn{
-        float: right
-    }
+    
 </style>

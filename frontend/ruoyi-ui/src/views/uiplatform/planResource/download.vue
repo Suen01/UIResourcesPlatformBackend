@@ -3,13 +3,13 @@
             <el-card class="box-card">
                 <div slot="header">
                     <el-breadcrumb separator="/">
-                        <el-breadcrumb-item>项目管理</el-breadcrumb-item>
-                        <el-breadcrumb-item>UI资源管理平台</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/planResource' }">项目管理</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/download' }">UI资源管理平台</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
                 <div class="file_list" >
                     <div class="file" v-for="list in fileList">
-                        <img src="@/assets/plan_icon/file.png" @click="handleCommand"/>
+                        <img src="@/assets/plan_icon/file.png" @click="handleCommand(list.title)"/>
                         <h3 class="file_title">{{list.title}}</h3>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
                   }
                 );
               },
-              handleCommand(){
-                this.$router.push({path:'/detail'})
+              handleCommand(title){
+                this.$router.push({path:`/detail/${title}`})
               },
               // 取消按钮
               cancel() {
@@ -60,9 +60,10 @@
     .app-container{
         .file_list{
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             .file{
                 text-align: center;
+                margin-right: 16vw;
                 img{
                     width:4.5vw;
                     height: 4.5vw;
@@ -73,7 +74,11 @@
             }
             
         }
-    
+        ::v-deep {
+            .el-card__body{
+                height:80vh
+            }
+        }
     }
     </style>
        

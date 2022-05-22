@@ -96,19 +96,19 @@
             <div style="height:400px;overflow:auto;">
                 <el-form ref="form" :model="form" :rules="rules" label-width="100px">
                 <el-form-item label="项目名称" prop="proName">
-                    <el-input v-model="form.proName" placeholder="请输入项目名称" style="width: 80%"/>
+                    <el-input v-model="form.proName" placeholder="请输入项目名称"/>
                 </el-form-item>
                 <el-form-item label="软件代号" prop="softwareNum">
-                    <el-input v-model="form.softwareNum" placeholder="请输入软件代号" style="width: 80%"/>
+                    <el-input v-model="form.softwareNum" placeholder="请输入软件代号"/>
                 </el-form-item>
                 <el-form-item label="所属型号" prop="belongNum">
-                    <el-input v-model="form.belongNum" placeholder="请输入所属型号" style="width: 80%"/>
+                    <el-input v-model="form.belongNum" placeholder="请输入所属型号"/>
                 </el-form-item>
                 <el-form-item label="项目负责人" prop="proLead">
-                    <el-input v-model="form.proLead" placeholder="请输入项目负责人" style="width: 80%"/>
+                    <el-input v-model="form.proLead" placeholder="请输入项目负责人"/>
                 </el-form-item>
                 <el-form-item label="项目类型">
-                    <el-select v-model="form.proType" placeholder="请选择" style="width: 80%">
+                    <el-select v-model="form.proType" placeholder="请选择">
                         <el-option
                             v-for="item in proTypeList"
                             :key="item.value"
@@ -118,7 +118,7 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="项目领域">
-                    <el-select v-model="form.proArea" placeholder="请选择" style="width: 80%">
+                    <el-select v-model="form.proArea" placeholder="请选择">
                         <el-option
                             v-for="item in proAreaList"
                             :key="item.value"
@@ -128,13 +128,13 @@
                         </el-select>
                     </el-form-item>
                 <el-form-item label="项目架构">
-                    <el-select v-model="form.proStruct" placeholder="请选择" style="width: 80%">
+                    <el-select v-model="form.proStruct" placeholder="请选择">
                             <el-option key="0" label="C/S" value="0" ></el-option>
                             <el-option key="1" label="B/S" value="1"></el-option>
                     </el-select>
                     </el-form-item>
                     <el-form-item label="项目状态">
-                        <el-select v-model="form.proStatus" placeholder="请选择" style="width: 80%">
+                        <el-select v-model="form.proStatus" placeholder="请选择">
                             <el-option key="0" label="未启动" value="0" ></el-option>
                             <el-option key="1" label="进行中" value="1"></el-option>
                             <el-option key="2" label="已结束" value="2"></el-option>
@@ -328,11 +328,17 @@ export default {
       };
 </script>
 
-<style lang="scss" >
-    .app-container .el-form-item__content .el-input{
-        width: 50%;
+<style lang="scss" scoped>
+    ::v-deep {
+      .el-form-item__content{
+        .el-input--medium{
+            width: 80%;
+        }
+        .el-select{
+            width: 100%
+        }
+      }
 
-    
     }
 </style>
    
