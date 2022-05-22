@@ -2,7 +2,7 @@
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
       <div class="form_title">
-        <img src="../assets/logo/logo.png"/>
+        <img src="../assets/manage/shareIcon.png"/>
         <h3 class="title">UI资源协同管理平台</h3>
       </div>
       <el-form-item prop="username">
@@ -10,7 +10,7 @@
           v-model="loginForm.username"
           type="text"
           auto-complete="off"
-          placeholder="账号"
+          placeholder="用户名"
         >
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
         </el-input>
@@ -26,7 +26,22 @@
           <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon" />
         </el-input>
       </el-form-item>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
+      <!-- <el-form-item prop="code" v-if="captchaOnOff">
+        <el-input
+          v-model="loginForm.code"
+          auto-complete="off"
+          placeholder="验证码"
+          style="width: 63%"
+          @keyup.enter.native="handleLogin"
+        >
+          <svg-icon slot="prefix" icon-class="validCode" class="el-input__icon input-icon" />
+        </el-input>
+        <div class="login-code">
+          <img :src="codeUrl" @click="getCode" class="login-code-img"/>
+        </div>
+      </el-form-item>-->
+     
+      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">自动登录</el-checkbox>
       <el-form-item style="width:100%;">
         <el-button
           :loading="loading"
@@ -38,19 +53,20 @@
           <span v-if="!loading">登 录</span>
           <span v-else>登 录 中...</span>
         </el-button>
-        <div style="float: right;" v-if="register">
-          <router-link class="link-type" :to="'/register'">立即注册</router-link>
+        <div style="float: right;margin-top: 10px">
+          <router-link class="link-type" :to="'/register'">注册账户</router-link>
         </div>
       </el-form-item>
     </el-form>
     <!--  底部  -->
-    <div class="el-login-footer">
+    <!-- <div class="el-login-footer">
       <span>Copyright © 2018-2022 ruoyi.vip All Rights Reserved.</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
+import { getCodeImg } from "@/api/login";
 import Cookies from "js-cookie";
 import { encrypt, decrypt } from '@/utils/jsencrypt'
 
@@ -58,6 +74,7 @@ export default {
   name: "Login",
   data() {
     return {
+      codeUrl: "",
       loginForm: {
         username: "admin",
         password: "123456",
@@ -75,6 +92,8 @@ export default {
         code: [{ required: true, trigger: "change", message: "请输入验证码" }]
       },
       loading: false,
+      // 验证码开关
+      captchaOnOff: true,
       // 注册开关
       register: false,
       redirect: undefined
@@ -89,9 +108,19 @@ export default {
     }
   },
   created() {
+    this.getCode();
     this.getCookie();
   },
   methods: {
+    getCode() {
+      getCodeImg().then(res => {
+        this.captchaOnOff = res.captchaOnOff === undefined ? true : res.captchaOnOff;
+        if (this.captchaOnOff) {
+          this.codeUrl = "data:image/gif;base64," + res.img;
+          this.loginForm.uuid = res.uuid;
+        }
+      });
+    },
     getCookie() {
       const username = Cookies.get("username");
       const password = Cookies.get("password");
@@ -103,6 +132,7 @@ export default {
       };
     },
     handleLogin() {
+      // this.$router.push({ path: "/planResource" })
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
@@ -119,6 +149,9 @@ export default {
             this.$router.push({ path: this.redirect || "/" }).catch(()=>{});
           }).catch(() => {
             this.loading = false;
+            if (this.captchaOnOff) {
+              this.getCode();
+            }
           });
         }
       });
@@ -129,11 +162,12 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 .login {
-  height: 100%;
-  background-image: url("../assets/images/login-background.png");
-  background-size: cover;
   position: relative;
-  user-select: none;
+  /* width:100vw; */
+  height: 100%;
+  background-image: url("../assets/manage/bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .form_title{
   display: flex;
@@ -151,14 +185,13 @@ export default {
     color: #707070;
   }
 }
-
 .login-form {
   position: absolute;
   bottom: 16vh;
   right: 10vw;
   border-radius: 6px;
   background: #ffffff;
-  width: 400px;
+  width: 31vw;
   padding: 25px 25px 5px 25px;
   .el-input {
     height: 38px;
@@ -190,7 +223,7 @@ export default {
   height: 40px;
   line-height: 40px;
   position: fixed;
-  bottom: 0;
+  bottom: 0; 
   width: 100%;
   text-align: center;
   color: #fff;
