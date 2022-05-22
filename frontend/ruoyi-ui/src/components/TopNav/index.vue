@@ -139,7 +139,7 @@ export default {
       } else {
         // 显示左侧联动菜单
         this.activeRoutes(key);
-        // this.$router.push({ path: key });
+        this.$router.push({ path: key });
         // this.$store.dispatch('app/toggleSideBarHide', false);
       }
     },

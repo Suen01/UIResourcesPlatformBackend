@@ -1,6 +1,6 @@
 <!-- api文档 -->
 <template>
-  <div>
+  <div class="app-container">
       api文档
   </div>
 </template>

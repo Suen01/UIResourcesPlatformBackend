@@ -1,6 +1,6 @@
 <!-- 工具管理 -->
 <template>
-  <div>
+  <div class="app-container">
       工具管理
   </div>
 </template>

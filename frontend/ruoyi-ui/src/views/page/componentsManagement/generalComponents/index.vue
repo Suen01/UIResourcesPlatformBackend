@@ -1,6 +1,6 @@
 <!-- 通用组件管理 -->
 <template>
-  <div>
+  <div class="app-container">
       通用组件管理
   </div>
 </template>

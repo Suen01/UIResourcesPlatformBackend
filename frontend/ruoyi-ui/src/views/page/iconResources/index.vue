@@ -1,6 +1,6 @@
 <!-- 图标资源 -->
 <template>
-  <div>
+  <div class="app-container">
       图标资源
   </div>
 </template>

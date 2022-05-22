@@ -1,6 +1,6 @@
 <!-- 切图资源 -->
 <template>
-  <div>
+  <div class="app-container">
       切图资源
   </div>
 </template>

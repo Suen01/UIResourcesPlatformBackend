@@ -1,6 +1,6 @@
 <!-- 三维模型 -->
 <template>
-  <div>
+  <div class="app-container">
       三维模型
   </div>
 </template>
