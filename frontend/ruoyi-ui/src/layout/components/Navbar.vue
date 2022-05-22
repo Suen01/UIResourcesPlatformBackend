@@ -34,7 +34,7 @@ import TopNav from '@/components/TopNav'
 import Hamburger from '@/components/Hamburger'
 import Screenfull from '@/components/Screenfull'
 import Search from '@/components/HeaderSearch'
-import Logo from "./Sidebar/Logo.vue";
+import Logo from "./Logo.vue";
 
 export default {
   components: {

@@ -4,9 +4,11 @@
       <navbar />
     </el-header>
     <el-container>
+      <transition name="fade-aside-transform" mode="out-in">
       <el-aside v-if="!sidebarRouterHidden && !sidebar.hide" width="200px">
         <sidebar/>
       </el-aside>
+      </transition>
       <el-main>
         <app-main />
       </el-main>
@@ -49,6 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-wrapper{
+  background: #f0f2f5;
   .el-header{
     padding: 0;
   }
@@ -56,7 +59,7 @@ export default {
     padding: 0;
     width: 100%;
     min-height: calc(100vh - 50px);
-    background: #f0f2f5;
+    
   }
   .el-aside{
     padding: 0;
