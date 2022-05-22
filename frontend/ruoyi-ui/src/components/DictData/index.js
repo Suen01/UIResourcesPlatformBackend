@@ -4,6 +4,7 @@ import { getDicts as getDicts } from '@/api/system/dict/data'
 
 function install() {
   Vue.use(DataDict, {
+    
     metas: {
       '*': {
         labelField: 'dictLabel',

@@ -4,7 +4,10 @@
 @import './element-ui.scss';
 @import './sidebar.scss';
 @import './btn.scss';
-
+*{
+  margin: 0;
+  padding: 0;
+}
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -188,4 +191,10 @@ aside {
 
 .multiselect--active {
   z-index: 1000 !important;
+}
+
+ul{
+  li{
+    list-style: none;
+  }
 }
