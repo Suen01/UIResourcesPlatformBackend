@@ -5,8 +5,8 @@
     @select="handleSelect"
   >
     <template v-for="(item, index) in topMenus">
-      <el-menu-item :style="{'--theme': theme}" :index="item.path" :key="index" v-if="index < visibleNumber"
-        ><svg-icon :icon-class="item.meta.icon" />
+      <el-menu-item :style="{'--theme': theme}" :index="item.path" :key="index" v-if="index < visibleNumber">
+        <svg-icon :icon-class="item.meta.icon"/>
         {{ item.meta.title }}</el-menu-item
       >
     </template>
@@ -29,7 +29,7 @@
 
 <script>
 import { constantRoutes } from "@/router";
-
+import { mapGetters } from "vuex";
 // 隐藏侧边栏路由
 const hideList = ['/index', '/user/profile'];
 
@@ -37,12 +37,13 @@ export default {
   data() {
     return {
       // 顶部栏初始数
-      visibleNumber: 5,
+      visibleNumber: 7,
       // 当前激活菜单的 index
       currentIndex: undefined
     };
   },
   computed: {
+        ...mapGetters(["sidebarRouters"]),
     theme() {
       return this.$store.state.settings.theme;
     },
@@ -101,6 +102,14 @@ export default {
       return activePath;
     },
   },
+  watch: {
+    $route: {
+      handler(router) {
+        this.activeRoutes(router.path)
+      },
+      immediate: true
+    }
+  },
   beforeMount() {
     window.addEventListener('resize', this.setVisibleNumber)
   },
@@ -113,11 +122,11 @@ export default {
   methods: {
     // 根据宽度计算设置显示栏数
     setVisibleNumber() {
-      const width = document.body.getBoundingClientRect().width / 3;
-      this.visibleNumber = parseInt(width / 85);
+      const width = document.body.getBoundingClientRect().width / 2;
+      this.visibleNumber = parseInt(width / 120);
     },
     // 菜单选择事件
-    handleSelect(key, keyPath) {
+    handleSelect(key) {
       this.currentIndex = key;
       const route = this.routers.find(item => item.path === key);
       if (this.ishttp(key)) {
@@ -126,16 +135,12 @@ export default {
       } else if (!route || !route.children) {
         // 没有子路由路径内部打开
         this.$router.push({ path: key });
-        this.$store.dispatch('app/toggleSideBarHide', true);
+        // this.$store.dispatch('app/toggleSideBarHide', true);
       } else {
         // 显示左侧联动菜单
         this.activeRoutes(key);
-<<<<<<< HEAD
         this.$router.push({ path: key });
         // this.$store.dispatch('app/toggleSideBarHide', false);
-=======
-        this.$store.dispatch('app/toggleSideBarHide', false);
->>>>>>> f3438530270daa80bd6dd76a200384b577b0d576
       }
     },
     // 当前激活的路由
@@ -159,28 +164,47 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.topmenu-container.el-menu--horizontal > .el-menu-item {
+<style lang="scss" scoped>
+::v-deep.topmenu-container.el-menu--horizontal > .el-menu-item {
   float: left;
   height: 50px !important;
-  line-height: 50px !important;
-  color: #999093 !important;
-  padding: 0 5px !important;
-  margin: 0 10px !important;
+  line-height: 40px !important;
+  color: #fff !important;
+  padding: 0 25px !important;
 }
 
-.topmenu-container.el-menu--horizontal > .el-menu-item.is-active, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
+::v-deep.topmenu-container.el-menu--horizontal > .el-menu-item.is-active, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
   border-bottom: 2px solid #{'var(--theme)'} !important;
   color: #303133;
 }
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):hover{
+  background-color: #457db2;
+}
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):focus {
+  background-color: #1890ff;
+}
+
+.el-menu--horizontal > .el-menu-item.is-active {
+  background-color: #1890ff;
+}
+.el-menu.el-menu--horizontal{
+  border-bottom: 0;
+}
+
 
 /* submenu item */
-.topmenu-container.el-menu--horizontal > .el-submenu .el-submenu__title {
+::v-deep.topmenu-container.el-menu--horizontal > .el-submenu .el-submenu__title {
   float: left;
   height: 50px !important;
-  line-height: 50px !important;
-  color: #999093 !important;
-  padding: 0 5px !important;
-  margin: 0 10px !important;
+  line-height: 40px !important;
+  color: #fff !important;
+   padding: 0 25px !important;
+}
+
+::v-deep.el-menu--horizontal > .el-submenu .el-submenu__title:hover{
+  background-color: #457db2 !important;
+}
+.el-menu--horizontal > .el-submenu.is-active .el-submenu__title{
+  color: #ffffff;
 }
 </style>

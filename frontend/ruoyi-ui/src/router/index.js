@@ -31,6 +31,19 @@ import Layout from '@/layout'
 // 公共路由
 export const constantRoutes = [
   {
+    path: '',
+    component: Layout,
+    redirect: 'index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Index',
+        meta: { title: '首页', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
+  {
     path: '/redirect',
     component: Layout,
     hidden: true,
@@ -61,44 +74,19 @@ export const constantRoutes = [
     component: () => import('@/views/error/401'),
     hidden: true
   },
-  {
-    path: '',
-    component: Layout,
-    redirect: '/planResource',
-    children: [
-      {
-        path: '/index',
-        component: () => import('@/views/index_v1'),
-        name: 'Index',
-        meta: { title: '首页', icon: 'dashboard', affix: true }
-      },
-      {
-        path: '/icon',
-        component: () => import('@/views/uiplatform/icon/Icon'),
-        name: 'Icon'
-      },
-      {
-        path: '/planResource',
-        component: () => import('@/views/uiplatform/planResource')
-      },
-      {
-        path: '/upload',
-        component: () => import('@/views/uiplatform/planResource/upload')
-      },
-      {
-        path: '/download',
-        component: () => import('@/views/uiplatform/planResource/download')
-      },
-      {
-        path: '/detail',
-        component: () => import('@/views/uiplatform/planResource/resourceDetail')
-      },
-      {
-        path: '/planResource',
-        component: () => import('@/views/uiplatform/planResource')
-      }
-    ]
-  },
+  // {
+  //   path: '',
+  //   component: Layout,
+  //   redirect: 'index',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/index'),
+  //       name: 'Index',
+  //       meta: { title: '首页', icon: 'dashboard', affix: true }
+  //     }
+  //   ]
+  // },
   {
     path: '/user',
     component: Layout,
@@ -159,38 +147,10 @@ export const dynamicRoutes = [
       }
     ]
   },
-  {
-    path: '/monitor/job-log',
-    component: Layout,
-    hidden: true,
-    permissions: ['monitor:job:list'],
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/monitor/job/log'),
-        name: 'JobLog',
-        meta: { title: '调度日志', activeMenu: '/monitor/job' }
-      }
-    ]
-  },
-  {
-    path: '/tool/gen-edit',
-    component: Layout,
-    hidden: true,
-    permissions: ['tool:gen:edit'],
-    children: [
-      {
-        path: 'index/:tableId(\\d+)',
-        component: () => import('@/views/tool/gen/editTable'),
-        name: 'GenEdit',
-        meta: { title: '修改生成配置', activeMenu: '/tool/gen' }
-      }
-    ]
-  }
 ]
 
 // 防止连续点击多次路由报错
-const routerPush = Router.prototype.push
+let routerPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
   return routerPush.call(this, location).catch(err => err)
 }

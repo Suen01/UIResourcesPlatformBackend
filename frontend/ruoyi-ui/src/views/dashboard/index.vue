@@ -1,116 +1,11 @@
 <template>
   <div class="app-container dashboard">
-    <BreadcrumbContent>
-      <ul>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-        <li>qwewq</li>
-      </ul>
-    </BreadcrumbContent>
+    首页
   </div>
 </template>
 
 <script>
-import BreadcrumbContent from '@/components/BreadcrumbContent'
 export default {
-  components: { BreadcrumbContent },
 }
 </script>
 

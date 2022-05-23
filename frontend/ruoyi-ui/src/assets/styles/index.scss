@@ -4,7 +4,7 @@
 @import './element-ui.scss';
 @import './sidebar.scss';
 @import './btn.scss';
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -166,7 +166,7 @@ aside {
 
 .link-type,
 .link-type:focus {
-  color: #1890FF;
+  color: #337ab7;
   cursor: pointer;
 
   &:hover {
@@ -192,7 +192,6 @@ aside {
 .multiselect--active {
   z-index: 1000 !important;
 }
-
 ul{
   li{
     list-style: none;

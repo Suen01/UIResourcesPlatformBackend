@@ -388,7 +388,6 @@ export function camelCase(str) {
 export function isNumberStr(str) {
   return /^[+-]?(0|([1-9]\d*))(\.\d+)?$/g.test(str)
 }
-<<<<<<< HEAD
 
 export function pushHidden(routerList) {
   routerList.forEach(item => {
@@ -419,6 +418,3 @@ export function pushQuery(routerList) {
   })
   return routerList
 }
-=======
- 
->>>>>>> f3438530270daa80bd6dd76a200384b577b0d576
