@@ -8,7 +8,7 @@
       filterable
       default-first-option
       remote
-      placeholder="搜索目录"
+      placeholder="Search"
       class="header-search-select"
       @change="change"
     >
@@ -157,7 +157,6 @@ export default {
     cursor: pointer;
     font-size: 18px;
     vertical-align: middle;
-    color: #fff;
   }
 
   .header-search-select {
@@ -169,7 +168,6 @@ export default {
     border-radius: 0;
     display: inline-block;
     vertical-align: middle;
-    
 
     ::v-deep .el-input__inner {
       border-radius: 0;
@@ -179,13 +177,8 @@ export default {
       box-shadow: none !important;
       border-bottom: 1px solid #d9d9d9;
       vertical-align: middle;
-      border-radius: 10px;
-    }
-    ::v-deep .el-input__inner::-webkit-input-placeholder{
-      text-indent: 10px;
     }
   }
-
 
   &.show {
     .header-search-select {

@@ -31,8 +31,3 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.svg-icon{
-  margin-right: 10px;
-}
-</style>

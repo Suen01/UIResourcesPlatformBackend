@@ -4,8 +4,7 @@ const state = {
   sidebar: {
     opened: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : true,
     withoutAnimation: false,
-    hide: false,
-    sidebarHide: true
+    hide: false
   },
   device: 'desktop',
   size: Cookies.get('size') || 'medium'
@@ -38,7 +37,7 @@ const mutations = {
   },
   SET_SIDEBAR_HIDE: (state, status) => {
     state.sidebar.hide = status
-  },
+  }
 }
 
 const actions = {
