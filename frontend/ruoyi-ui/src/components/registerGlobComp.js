@@ -15,8 +15,9 @@ import ImagePreview from "@/components/ImagePreview"
 // 字典标签组件
 import DictTag from '@/components/DictTag'
 
+import BreadcrumbContent from '@/components/BreadcrumbContent'
 
-const compList = [Pagination, RightToolbar, Editor, FileUpload, ImageUpload, ImagePreview, DictTag];
+const compList = [Pagination, RightToolbar, Editor, FileUpload, ImageUpload, ImagePreview, DictTag, BreadcrumbContent];
 
 export function registerGlobComp(app) {
     compList.forEach((comp) => {

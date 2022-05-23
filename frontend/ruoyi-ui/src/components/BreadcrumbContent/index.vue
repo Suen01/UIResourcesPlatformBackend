@@ -3,9 +3,12 @@
         <div class="content">
             <header class="contentHeader">
                 <Breadcrumb />
+                <div class="breadcrumbContent-operation">
+                    <slot name="header"/>
+                </div>
             </header>
             <div class="contentMain">
-                    <slot/>
+                <slot/>
             </div>
         </div>
     </div>
@@ -24,6 +27,7 @@ export default {
     height: 100%;
     border-radius: 5px;
     background: #fff;
+    
     .content {
         width: 100%;
         height: 100%;
@@ -35,6 +39,12 @@ export default {
             height: 50px;
             border-bottom: 1px solid #CECECE;
             box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .breadcrumbContent-operation{
+                padding-right: 5px;
+            }
         }
         .contentMain{
             width: 100%;
