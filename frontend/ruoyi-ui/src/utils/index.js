@@ -1,4 +1,5 @@
 import { parseTime } from './ruoyi'
+import { isString } from './validate';
 
 /**
  * 表格时间格式化
@@ -397,6 +398,22 @@ export function pushHidden(routerList) {
           pushHidden(item.children)
         }
       }
+    }
+  })
+  return routerList
+}
+
+export function pushQuery(routerList) {
+  routerList.forEach(item => {
+    if ("query" in item) {
+      if (item.meta) {
+        if (isString(item.query)) {
+          item.meta.query = JSON.parse(item.query)
+        }
+      }
+    }
+    if (item.children) {
+      pushQuery(item.children)
     }
   })
   return routerList

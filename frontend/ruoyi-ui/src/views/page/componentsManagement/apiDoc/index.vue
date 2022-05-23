@@ -1,26 +1,55 @@
 <!-- api文档 -->
 <template>
   <div class="app-container apiDoc">
-    <!-- api文档
-      <IFrame src="https://element.eleme.cn/#/zh-CN"></IFrame> -->
     <BreadcrumbContent>
       <template slot="header">
-        <el-button type="primary">添加</el-button>
+        <el-button type="primary">上传</el-button>
       </template>
-      <FrameFile v-for="item in 3" :key="item" @frameFileClick="frameFileClick"></FrameFile>
+      <FileList v-for="(item, index) in list" :key="index" :item="item" @fileListClick="fileListClick"></FileList>
     </BreadcrumbContent>
   </div>
 </template>
 
 <script>
-// import IFrame from '@/components/iFrame/index.vue';
-import FrameFile from './components/frameFile/index.vue'
+import FileList from '../components/fileList/index'
 export default {
-  components: { FrameFile },
-  // components: { IFrame }
+  components: { FileList },
+  data() {
+    return {
+      list: [
+        {
+          title: '前端框架',
+          list: [
+            {
+              title: 'Vue_2.0'
+            },
+            {
+              title: 'Vue_3.0'
+            },
+            {
+              title: 'React_16.2'
+            }
+          ]
+        },
+        {
+          title: 'JAVA框架',
+          list: [
+            {
+              title: 'Spring boot1.0'
+            },
+            {
+              title: 'Spring boot1.0'
+            },
+            {
+              title: 'Spring boot1.0'
+            }
+          ]
+        }
+      ]
+    }
+  },
   methods: {
-    frameFileClick(val) {
-      console.log(val)
+    fileListClick(val) {
       this.$router.push('apiDocList')
     }
   }

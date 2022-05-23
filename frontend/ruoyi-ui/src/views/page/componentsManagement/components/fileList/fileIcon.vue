@@ -1,31 +1,35 @@
 <template>
     <div class="fileIcon">
         <svg-icon icon-class="file" class="svgIcon" />
-        <span class="title">Vue框架</span>
+        <span class="title">{{ title }}</span>
     </div>
 </template>
 
 <script>
 export default {
-
+    props: {
+        title: {
+            type: String,
+            default: ''
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .fileIcon {
-    width: 85px;
-    height: 85px;
+    height: 100px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     .title{
         font-size: 10px;
-        text-align: center;
         margin-right: 8px;
         color: #535353;
     }
     .svgIcon {
-        width: 100%;
-        height: 100%;
+        width: 75px;
+        height: 75px;
     }
 }
 </style>
