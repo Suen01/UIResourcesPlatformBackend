@@ -100,10 +100,12 @@
 /** 表格布局 **/
 .pagination-container {
 	position: relative;
-	height: 25px;
+	height: 40px;
 	margin-bottom: 10px;
 	margin-top: 15px;
-	padding: 10px 20px !important;
+	padding: 0px !important;
+	display: flex;
+	align-items: center;
 }
 
 /* tree border */
@@ -115,7 +117,7 @@
 }
 
 .pagination-container .el-pagination {
-	right: 0;
+	right: 10px;
 	position: absolute;
 }
 

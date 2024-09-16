@@ -1,4 +1,5 @@
 import { parseTime } from './ruoyi'
+import { isString } from './validate';
 
 /**
  * 表格时间格式化
@@ -387,4 +388,33 @@ export function camelCase(str) {
 export function isNumberStr(str) {
   return /^[+-]?(0|([1-9]\d*))(\.\d+)?$/g.test(str)
 }
- 
+
+export function pushHidden(routerList) {
+  routerList.forEach(item => {
+    if ("meta" in item) {
+      if ("hidden" in item) {
+        item.meta.hidden = item.hidden
+        if (item.children) {
+          pushHidden(item.children)
+        }
+      }
+    }
+  })
+  return routerList
+}
+
+export function pushQuery(routerList) {
+  routerList.forEach(item => {
+    if ("query" in item) {
+      if (item.meta) {
+        if (isString(item.query)) {
+          item.meta.query = JSON.parse(item.query)
+        }
+      }
+    }
+    if (item.children) {
+      pushQuery(item.children)
+    }
+  })
+  return routerList
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M0 0L64 0L64 64L0 64L0 0Z" id="path_1" />
+    <clipPath id="mask_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="Opened-Folder-icon-Copy">
+    <path d="M0 0L64 0L64 64L0 64L0 0Z" id="Background" fill="none" fill-rule="evenodd" stroke="none" />
+    <g clip-path="url(#mask_1)">
+      <path d="M2.3999 56.7992L2.3999 7.19922L18.8687 7.19922L23.6687 11.9992L56.7999 11.9992L56.7999 56.7992L2.3999 56.7992Z" id="Shape" fill="#B6DCFE" stroke="none" />
+      <path d="M18.5378 8.00049L22.869 12.3317L23.3378 12.8005L24.0002 12.8005L56.0002 12.8005L56.0002 56.0005L3.2002 56.0005L3.2002 8.00049L18.5378 8.00049M19.2001 6.40039L1.6001 6.40039L1.6001 57.6004L57.6001 57.6004L57.6001 11.2004L24.0001 11.2004L19.2001 6.40039L19.2001 6.40039L19.2001 6.40039Z" id="Shape" fill="#4788C7" fill-rule="evenodd" stroke="none" />
+      <g id="Group" transform="translate(1.6000977 19.199219)">
+        <path d="M0.958496 37.6003L7.0673 4.00029L24.2417 4.00029L29.0417 0.800293L61.4561 0.800293L55.3233 37.6003L0.958496 37.6003Z" id="Shape" fill="#DFF0FE" fill-rule="evenodd" stroke="none" />
+        <path d="M60.5122 1.6001L54.645 36.8001L1.91699 36.8001L7.73459 4.8001L24.0002 4.8001L24.485 4.8001L24.8882 4.5313L29.285 1.6001L60.5122 1.6001M62.4 0L28.8 0L24 3.2L6.4 3.2L0 38.4L56 38.4L62.4 0L62.4 0L62.4 0Z" id="Shape" fill="#4788C7" fill-rule="evenodd" stroke="none" />
+      </g>
+    </g>
+  </g>
+</svg>
